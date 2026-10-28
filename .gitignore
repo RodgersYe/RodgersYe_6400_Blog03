@@ -1,0 +1,6 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+/data/raw/cps_raw.csv
+/data/raw/cps_raw.csv.gz
