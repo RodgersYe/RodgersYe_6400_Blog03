@@ -81,8 +81,6 @@ RodgersYe_6400_Blog03/
 
 `ASECFLAG` must be included even if an initial variable check in the script does not list it: a later analysis step uses that column. An otherwise similar extract that omits `ASECFLAG` may fail.
 
-**Exact-reproduction qualification:** The download date, extract ID, IPUMS data version, and complete original extract definition were not recorded in the prior project documentation. The instructions above reproduce the **documented sample and analysis design**, but exact agreement with the original numerical results cannot be guaranteed if IPUMS has revised the underlying data or if the original extract had additional settings. Record the date, extract definition, data version, and codebook for your new download.
-
 ## 2. Install software and open the project
 
 Install **R** and, optionally, **RStudio**. Open `RodgersYe_6400_Blog03.Rproj` in RStudio, or set your R working directory to the folder containing that file. The original project documentation lists the following R package dependencies:
@@ -193,10 +191,6 @@ The analysis focuses on people **aged 16 or older who were at work during the CP
 
 **Monthly estimates.** For each month and age group, actual hours are summarized by the person-weighted mean:
 
-\[
-\overline{h}_{m,g} = \frac{\sum_{i \in (m,g)} \mathrm{WTFINL}_i h_i}{\sum_{i \in (m,g)} \mathrm{WTFINL}_i}.
-\]
-
 The script also reports sample counts, weighted population totals, weighted individual-level standard deviations, and the weighted percentage of people holding multiple jobs.
 
 **Annual estimates.** Each annual mean is the **simple average of the twelve monthly weighted means** for an age group; months are equally weighted at this aggregation stage. Main-job and other-job shares are calculated as **100 × (annual mean component hours / annual mean total hours)**. They are **ratios of means**, not averages of individual shares. Confirmed single-job workers contribute zero other-job hours.
@@ -213,7 +207,7 @@ The script also reports sample counts, weighted population totals, weighted indi
 | `annual_age_hours.csv` | Baseline annual age-group estimates; input to all five figures |
 | `age_group_changes_2000_2024.csv` | 2000-to-2024 endpoint comparisons |
 
-### Audits and sensitivity outputs (`data/processed/`)
+### Audits and outputs (`data/processed/`)
 
 | File | Content |
 |---|---|
@@ -243,8 +237,6 @@ The script also reports sample counts, weighted population totals, weighted indi
 | `fig4_main_job_share_by_age.png` | Main-job share of total hours |
 | `fig5_other_job_share_by_age.png` | Other-job share of total hours |
 
-The documented figure export settings are **11 × 7 inches at 300 dpi**. They compare the six age groups and mark 2024 observations. The main annual estimates, rather than the sensitivity estimates, supply the figures.
-
 ## 6. Interpretation and limitations
 
 - The sample includes people who **worked during the reference week**; it does not measure employment rates and excludes people not at work that week.
@@ -259,4 +251,4 @@ The raw IPUMS CPS microdata are **not committed to this repository**. Reproducer
 
 Credit **IPUMS CPS, University of Minnesota**, with acknowledgement of the **U.S. Census Bureau** and **U.S. Bureau of Labor Statistics** as the underlying CPS data providers. See [IPUMS CPS citation guidance](https://cps.ipums.org/cps/citation.shtml), and use the **version-specific citation** attached to the extract actually downloaded. The original version number and DOI cannot be supplied from the available documentation.
 
-To prevent accidental uploads, the repository's `.gitignore` should exclude the raw files (confirm these rules are present):
+To prevent accidental uploads, the repository's `.gitignore` should exclude the raw files.
